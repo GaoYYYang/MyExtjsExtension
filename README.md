@@ -1,0 +1,4 @@
+MyExtjsExtension
+================
+
+Extend some component
