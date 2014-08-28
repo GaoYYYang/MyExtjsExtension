@@ -51,8 +51,7 @@ Carlsirce.component.CheckBoxGroup = Ext.extend(Ext.form.CheckboxGroup, {
             checkboxGroupItems.itemAt(i).setValue(false);
     }
 });
-
-
+//输入Array二维数组，元素按照ID、值、渲染函数、列数排列。输入checkedValues为一个ID组成，‘，’分割的字符串
 Carlsirce.component.CheckBoxGroup.getCheckboxGroupItemsFromArray = function (array, checkedValues) {
 
     var items = [];
@@ -79,15 +78,16 @@ Carlsirce.component.CheckBoxGroup.getCheckboxGroupItemsFromArray = function (arr
     }
     return items;
 }
+
 Carlsirce.component.CheckBoxGroup.getCheckboxGroupItemsFromStore = function (store, checkedValues) {
     var items = [];
     var storeLength = store.getCount();
     for (var i = 0; i < storeLength; i++) {
         items[i] = {
             boxLabel: store.getAt(i).get("id"),
-            name: store.getAt(i).get("value")
-            //            renderFunction: array[i][2],
-            //            columnsWidth: array[i][4]
+            name: store.getAt(i).get("value"),
+            renderFunction: store.getAt(i).get("renderFunction"),
+            columnsWidth: store.getAt(i).get("columns")
         };
     }
     if (checkedValues && checkedValues.length > 0) {
